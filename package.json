@@ -1,16 +1,14 @@
 {
   "name": "webpack_test",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "build": "npx webpack",
     "serve": "webpack-dev-server --watch-content-base --hot",
     "start": "npm run build & npm run serve"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "hi0711",
+  "license": "Good Boy license",
   "devDependencies": {
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.4",
@@ -23,8 +21,5 @@
   },
   "dependencies": {
     "jquery": "^3.3.1",
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0",
-    "three": "^0.91.0"
   }
 }
