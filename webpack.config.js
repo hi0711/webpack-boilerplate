@@ -1,19 +1,20 @@
+const MODE = 'development';
+const enableSourceMap = (MODE === 'development');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+
 module.exports = {
-  mode: 'development',
+  mode: MODE,
   entry: [
-    'babel-polyfill',
-    './src/app.js'
+    //'babel-polyfill',
+    './src/js/main.js'
+  ],
+  plugins: [
+    new UglifyJsPlugin()
   ],
   output: {
-    path: `${__dirname}/dist`,
-    filename: 'main.js'
-  },
-  devServer: {
-    contentBase: 'dist',
-    port: 3000,
-    open: true,
-    progress: true,
-    watchContentBase: true
+    path: `${__dirname}/dist/assets/js`,
+    filename: 'main-bundle.js',
+    publicPath: '/'
   },
   module: {
     rules: [
@@ -26,6 +27,30 @@ module.exports = {
               presets: [
                 ['env', {'modules': false}]
               ]
+            }
+          }
+        ],
+        test: /\.scss$/,
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              url: false,
+              sourceMap: enableSourceMap,
+              importLoaders: 2,
+            }
+          },
+          {
+            loader: 'postcss-loader',
+            options: {
+              sourceMap: enableSourceMap
+            }
+          },
+          {
+            loader: 'sass-loader',
+            options: {
+              sourceMap: enableSourceMap
             }
           }
         ],
