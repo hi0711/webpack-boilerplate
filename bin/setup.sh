@@ -7,10 +7,11 @@ fi
 
 if [ ! -d node_modules ] ; then
   npm install
+  npm i -D html2pug
   npx html2pug < src/tmpl/index.html > src/tmpl/index.pug && rm -rf src/tmpl/index.html
 fi
 
 if [ ! -f .gitignore ] ; then
   gibo -u
-  gibo node >> .gitignore
+  gibo node >> .gitignore && echo "dist" >> .gitignore
 fi

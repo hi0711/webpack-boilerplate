@@ -1,6 +1,7 @@
 const MODE = 'development';
 const enableSourceMap = (MODE === 'development');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const path = require('path');
 
 module.exports = {
   mode: MODE,
@@ -55,7 +56,20 @@ module.exports = {
           }
         ],
         exclude: /node_modules/,
-      }
+      },
+      //{
+      //  test: /\.modernizrrc.js$/,
+      //  use: ['modernizr-loader']
+      //},
+      //{
+      //  test: /\.modernizrrc(\.json)?$/,
+      //  use: ['modernizr-loader', 'json-loader']
+      //}
     ]
-  }
+  },
+  //resolve: {
+  //  alias: {
+  //    modernizr$: path.resolve(__dirname, './.modernizrrc')
+  //  }
+  //}
 };
